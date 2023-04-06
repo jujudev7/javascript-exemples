@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="addeventlistener.css" />
+    <title>addEventListener</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f1f1f1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    article {
+      width: 400px;
+      background: #fff;
+      padding: 20px 20px 0;
+      font-size: 18px;
+      max-height: 270px;
+      overflow: hidden;
+      transition: max-height 1s;
+      text-align: justify;
+      margin-top: 20px;
+    }
+
+    p {
+      margin-bottom: 16px;
+    }
+
+    article.open {
+      max-height: 1000px;
+    }
+
+    button {
+      background: #0080ff;
+      color: #fff;
+      padding: 0.6rem;
+      margin-top: 20px;
+      border: none;
+      border-radius: 4px;
+    }
+
+    button:hover {
+      cursor: pointer;
+      background: #1e1d25;
+    }
+  </style>
+  <body>
+    <h1>addEventListener</h1>
+    freeCodeCamp link :
+    <a
+      href="https://www.freecodecamp.org/news/html-button-onclick-javascript-click-event-tutorial/"
+      >https://www.freecodecamp.org/news/html-button-onclick-javascript-click-event-tutorial/</a
+    >
+    <br />
+    Basic eventListener syntax : <br />
+    element.addEventListener("type-of-event", functionToExecute)
+
+    <article id="content">
+      <p>
+        freeCodeCamp is one of the best platforms to learn how to code.
+        freeCodeCamp has a detailed curriculum that will take you from zero to
+        hero in web development, software engineering, machine learning, and
+        more.
+      </p>
+
+      <p>
+        freeCodeCamp also has a YouTube channel containing over 1000 videos on
+        web development, software engineering, machine learning, data science,
+        freelance web development, database administration, and pretty much
+        anything related to tech. To get updates when videos are uploaded, you
+        need to subscribe to the channel and turn on notifications. You can also
+        follow freeCodeCamp on Twitter, where links to well written articles and
+        videos are tweeted daily.
+      </p>
+
+      <p>
+        Since no one has to pay to learn how to code on freeCodeCamp,
+        freeCodeCamp runs on voluntary donations from donors all around the
+        world in order to pay employees and maintain servers. If you are
+        generous enough consider joining the donors.
+      </p>
+    </article>
+
+    <button onclick="showMore()">Show more</button>
+
+    <!-- <script src="index.js"></script> -->
+    <script>
+      const article = document.querySelector("#content");
+      const button = document.querySelector("button");
+
+      // function showMore() {
+      //   if (article.className == "open") {
+      //     // read less
+      //     article.className = "";
+      //     button.innerHTML = "Show more";
+      //   } else {
+      //     //read more
+      //     article.className = "open";
+      //     button.innerHTML = "Show less";
+      //   }
+      // }
+
+      function showMore() {
+        if (article.className == "") {
+          //read more
+          article.className = "open";
+          button.innerHTML = "Show less";
+        } else {
+          // read less
+          article.className = "";
+          button.innerHTML = "Show more";
+        }
+      }
+    </script>
+  </body>
+</html>
