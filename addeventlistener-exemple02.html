@@ -56,6 +56,7 @@
       background: #1e1d25;
     }
   </style>
+
   <body>
     <h1>addEventListener</h1>
     freeCodeCamp link :
@@ -93,12 +94,15 @@
       </p>
     </article>
 
-    <button onclick="showMore()">Show more</button>
+    <!-- <button onclick="showMore()">Show more</button> -->
+    <button>Show more</button>
 
     <!-- <script src="index.js"></script> -->
     <script>
       const article = document.querySelector("#content");
       const button = document.querySelector("button");
+
+      button.addEventListener("click", showMore);
 
       // function showMore() {
       //   if (article.className == "open") {
