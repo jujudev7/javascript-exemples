@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button onclick Javascript</title>
+</head>
+<body>
+    <h1>Button onclick Javascript</h1>
+    freeCodeCamp link : <a href="https://www.freecodecamp.org/news/html-button-onclick-javascript-click-event-tutorial/">https://www.freecodecamp.org/news/html-button-onclick-javascript-click-event-tutorial/</a>
+    <h2>Exemple #01</h2>
+    <!-- <p class="name">My paragraph</p>
+    <button onclick="functionToExecute()">Click</button> -->
+    <p class="name">Mon paragraphe</p>
+    <button onclick="changeColor()">Change le texte en bleu</button> 
+
+    <!-- <script src="index.js"></script> -->
+    <script>
+        const name = document.querySelector(".name");
+
+        // function functionName() {
+        //     code
+        // }
+
+        function changeColor() {
+            name.style.color = "blue"; // le texte passe en bleu
+        }
+        // In the DOM (Document Object Model, refers to all of the HTML), to change anything that relates to style, you need to write “style” then a dot (.). This is followed by what you want to change, which might be the color, background color, font size, and so on.
+    </script>
+</body>
+</html>
