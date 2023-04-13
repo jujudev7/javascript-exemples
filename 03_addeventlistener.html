@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>addEventListener</title>
+    <style>
+      body {
+        display: flex;
+        align-items: center;
+        /* justify-content: center; */
+        flex-direction: column;
+        height: 100vh;
+      }
+      p {
+        font-size: 2rem;
+      }
+
+      button {
+        font-weight: bold;
+        padding: 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-bottom: 30px;
+      }
+
+      button.blue {
+        background-color: #3498db;
+      }
+
+      button.green {
+        background-color: #2ecc71;
+      }
+
+      button.orange {
+        background-color: orangered;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>addEventListener</h1>
+
+    freeCodeCamp link :
+    <a
+      href="https://www.freecodecamp.org/news/html-button-onclick-javascript-click-event-tutorial/"
+      target="_blank"
+      >https://www.freecodecamp.org/news/html-button-onclick-javascript-click-event-tutorial/</a
+    >
+   <h3>Basic eventListener syntax :</h3>
+    element.addEventListener("type-of-event", functionToExecute)
+    <div>
+      <p class="name">Mon paragraphe</p>
+      <button>Change en bleu</button>
+    </div>
+
+    <script>
+      const name = document.querySelector(".name");
+      const btn = document.querySelector("button");
+
+      btn.addEventListener("click", function () {
+        name.style.color = "blue";
+      });
+
+    //   OR;
+
+    //   btn.addEventListener("click", changeColor);
+    //   function changeColor() {
+    //     name.style.color = "blue";
+    //   }
+    </script>
+  </body>
+</html>
+
+1. Create a button <br> 2. Add onclick attribute to the button. Here we want to
+execute the function changeColor() <br> 3. Write the Javascript script <br> 4. Declare our
+variables with let, var, or const, things are safer <br> 5. Select the element we
+want to manipulate (getElementById(), getElementsByClassName(), or
+querySelector() ) <br> 6. Write the function
