@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Onclick event</title>
+    <style>
+      body {
+        display: flex;
+        align-items: center;
+        /* justify-content: center; */
+        flex-direction: column;
+        height: 100vh;
+      }
+      p {
+        font-size: 2rem;
+      }
+
+      button {
+        font-weight: bold;
+        padding: 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      button.blue {
+        background-color: #3498db;
+      }
+
+      button.green {
+        background-color: #2ecc71;
+      }
+
+      button.orange {
+        background-color: orangered;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Onclick event</h1>
+
+    freeCodeCamp link :
+    <a
+      href="https://www.freecodecamp.org/news/html-button-onclick-javascript-click-event-tutorial/"
+      target="_blank"
+      >https://www.freecodecamp.org/news/html-button-onclick-javascript-click-event-tutorial/</a
+    >
+
+    <div>
+      <p class="name">Mon paragraphe</p>
+      <button onclick="changeColor()">Change en bleu</button>
+    </div>
+
+    <script>
+        const name = document.querySelector(".name");
+
+        function changeColor() {
+            name.style.color = "blue";
+        }
+    </script>
+  </body>
+</html>
+
+1. Create a button 
+2. Add onclick attribute to the button. Here we want to execute the function changeColor()
+3. Write the Javascript script 
+4. Declare our variables with let, var, or const, things are safer
+5. Select the element we want to manipulate (getElementById(), getElementsByClassName(), or querySelector() )
+6. Write the function
