@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Function canDrive</title>
+    <style></style>
+  </head>
+  <body>
+    <h1>Function canDrive</h1>
+    <script>
+      // function canDrive(age, pays) {   // il existe 2 façons de déclarer une fonction : function + global, const réduit le scope
+      const canDrive = function (age, pays) {
+        if ((age >= 18 && pays === "FR") || (age >= 16 && pays === "US")) {
+          return true;
+        }
+        return false;
+      };
+
+      console.log(canDrive(13, "FR"));
+      console.log(canDrive(19, "FR"));
+
+      let i = 0;
+
+      function greeting(name) {
+        i++;
+        console.log(`Bonjour ${name}`);
+      }
+
+      console.log(i);
+      greeting("John");
+      console.log(i);
+      greeting("Jane");
+      console.log(i);
+
+      const notes = [12, 13, 14];
+
+      function upNotes(n) {
+        n[0]++;
+      }
+
+      upNotes(notes);
+      console.log(notes);
+
+      function maFonction() {
+        console.log(this);
+      }
+
+      maFonction.call(3); // console.log(this) affiche Number { 3 }
+
+      const a = {
+        firstname: "John",
+        lastname: "Doe",
+        fullname: function () {
+          console.log(`${this.firstname} ${this.lastname}`); // this permet d'appeler la fonction sans lui passer de paramètre tout en ayant l'objet auquel on fait référence
+        },
+      };
+
+      a.fullname();
+
+      const isPair = function (a, cb) {
+        if (a % 2 === 0) {
+          cb(a);
+        }
+      };
+
+      isPair(4, function (n) {
+        console.log("Mon nombre est pair " + n);
+      });
+
+      // On crée un nombre entre 0 et 10
+      // 3 essais pour deviner le mot
+      // isRight(n)
+      // guess()
+
+      function getRandom(max) {
+        return Math.floor(Math.random() * (max + 1));
+      }
+      const solution = getRandom(10);
+      console.log(solution);
+
+      function isRight(n) {
+        return solution === n;
+      }
+
+      function guess() {
+        const number = prompt("Entrez un chiffre") * 1; // on multiplie par 1 pour être sûr d'avoir un nombre
+        return isRight(number);
+      }
+
+      for (i = 0; i < 3; i++) {
+        if (guess()) {
+          console.log("Bravo !");
+          break;
+        } else if (i === 2) {
+          console.log("Vous avez perdu :(");
+        }
+      }
+
+      function isPremier(n) {
+        if (n < 2) {
+          return false;
+        }
+        for (let i = n - 1; i > 1; i--) {
+          if (n % i === 0) {
+            return false;
+          }
+        }
+        return true;
+      }
+      
+      console.log("0", isPremier(0));
+      console.log("1", isPremier(1));
+      console.log("2", isPremier(2));
+      console.log("3", isPremier(3));
+      console.log("11", isPremier(11));
+      console.log("12", isPremier(12));
+    </script>
+  </body>
+</html>
