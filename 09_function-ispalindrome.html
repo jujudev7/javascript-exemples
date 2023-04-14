@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Functions exos</title>
+    <style></style>
+  </head>
+  <body>
+    <h1>Functions exos</h1>
+    <script>
+      function isPalindrome(word) {
+        // reverse
+        // split
+        // join
+        // to UpperCase
+
+        // const str = "The quick brown fox jumps over the lazy dog.";
+
+        const letters = word.split("");
+        console.log(letters);
+
+        letters.reverse();
+        console.log(letters);
+
+        const reversedWord = letters.join('');
+        console.log("reversedWord:", reversedWord);
+
+        return word.toUpperCase() === reversedWord.toUpperCase() // on ajoute .toUpperCase() afin d'éliminer les problèmes de casse
+      }
+
+      // On peut écrire les différentes méthodes sur une seule ligne :
+      // const letters = word.split("").reverse().join('');
+      // return word.toUpperCase() === reversedWord.toUpperCase() 
+
+      // On peut aussi indenter cette ligne avant le point . pour la rendre + lisible
+      // const letters = word
+      //   .split("")
+      //   .reverse()
+      //   .join('');
+      // return word.toUpperCase() === reversedWord.toUpperCase()
+
+      const words = {
+        kayak: true,
+        SOS: true,
+        Kayak: true,
+        Bonjour: false,
+      };
+
+      for (let word in words) {
+        if (isPalindrome(word) !== words[word]) {
+          console.error(`isPalindrome(${word}) aurait du renvoyer `);
+        }
+      }
+    </script>
+  </body>
+</html>
