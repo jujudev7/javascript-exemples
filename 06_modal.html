@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modal</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Inter", sans-serif;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* justify-content: center; */
+        color: #222;
+        background-color: #baf6fc;
+        position: relative;
+        min-height: 100vh;
+        margin-top: 25px;
+      }
+
+      p {
+        padding-bottom: 10px;
+      }
+      
+      h1 {
+        margin: 15px;
+      }
+      /* What you did was style the modal element and then position it using the absolute property. This works because you added a position relative property to the body element earlier */
+      .modal {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.4rem;
+        width: 450px;
+        padding: 1.3rem;
+        min-height: 250px;
+        position: absolute;
+        top: 20%;
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 15px;
+        z-index: 2;
+      }
+
+      .modal .flex {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .modal input {
+        padding: 0.7rem 1rem;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 0.9em;
+      }
+
+      .modal p {
+        font-size: 0.9rem;
+        color: #777;
+        margin: 0.4rem 0 0.2rem;
+      }
+
+      button {
+        cursor: pointer;
+        border: none;
+        font-weight: 600;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 0.8rem 1.4rem;
+        font-weight: 700;
+        background-color: black;
+        color: white;
+        border-radius: 5px;
+        text-align: center;
+        font-size: 1em;
+      }
+
+      .btn-open {
+        position: absolute;
+        bottom: 150px;
+      }
+
+      .btn-close {
+        transform: translate(10px, -20px);
+        padding: 0.5rem 0.7rem;
+        background: #eee;
+        border-radius: 50%;
+      }
+
+      .overlay {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(3px);
+        z-index: 1;
+      }
+
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Modal</h1>
+   <p> freeCodeCamp - How to Build a Modal with JavaScript :
+    <a
+      href="https://www.freecodecamp.org/news/how-to-build-a-modal-with-javascript/"
+      >▶️ How to Build a Modal with JavaScript</a
+    ></p>
+<p>CodePen : <a href="https://codepen.io/evavic44/pen/zYjjzoV">▶️ https://codepen.io/evavic44/pen/zYjjzoV</a></p>
+    <!-- hidden class added to the modal and the overlay element. This is very important because you'll target these classes to hide your modal and overlay using CSS -->
+
+    <section class="modal hidden">
+      <!-- serve as your modal container -->
+      <div class="flex">
+        <img
+          src="https://cdn.pixabay.com/photo/2017/05/31/11/47/head-2360166_1280.jpg"
+          width="50px"
+          height="50px"
+          alt="user"
+        />
+        <button class="btn-close">⨉</button>
+      </div>
+      <div>
+        <h3>Stay in touch</h3>
+        <p>
+          This is a dummy newsletter form so don't bother trying to test it. Not
+          that I expect you to, anyways. :)
+        </p>
+      </div>
+
+      <input type="email" id="email" placeholder="brendaneich@js.com" />
+      <button class="btn">Submit</button>
+    </section>
+
+    <div class="overlay hidden"></div>
+    <!-- serve as your overlay element : dark blurred background you see when the modal is open  -->
+    <button class="btn btn-open">Open Modal</button>
+    <!-- fires up our modal when you click this button -->
+
+    <script>
+      const modal = document.querySelector(".modal");
+      const overlay = document.querySelector(".overlay");
+      const openModalBtn = document.querySelector(".btn-open");
+      const closeModalBtn = document.querySelector(".btn-close");
+
+      const openModal = function () {
+        modal.classList.remove("hidden");
+        overlay.classList.remove("hidden");
+      };
+
+      openModalBtn.addEventListener("click", openModal);
+
+      const closeModal = function () {
+        modal.classList.add("hidden");
+        overlay.classList.add("hidden");
+      };
+
+      closeModalBtn.addEventListener("click", closeModal);
+
+      overlay.addEventListener("click", closeModal); // on ferme la modale également lorsque l'on clique en dehors de la modale, donc sur l'overlay
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && !modal.classList.contains("hidden")) {
+          closeModal(); // on ferme aussi la modale lorsque l'utilisateur appuie sur la touche Echap
+        } 
+      });
+    </script>
+  </body>
+</html>

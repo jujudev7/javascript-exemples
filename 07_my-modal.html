@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Modal</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+      }
+      button {
+        background-color: deeppink;
+        color: aliceblue;
+        padding: 20px 0;
+        width: 150px;
+        border-radius: 10px;
+        border: none;
+        cursor: pointer;
+      }
+
+      button:hover {
+        font-weight: bold;
+      }
+
+      .modal {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        top: 50%;
+        background-color: aqua;
+        padding: 60px 60px 0px 60px;
+        z-index: 2;
+      }
+
+      .close-btn {
+        font-size: 2rem;
+        position: absolute;
+        right: 24px;
+        top: 10px;
+        cursor: pointer;
+        color:darkgray;
+      }
+
+      .close-btn:hover {
+        color: deeppink;
+        font-weight: bold;
+      }
+
+      .overlay {
+        background-color: rgba(0, 0, 0, 0.75);
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        z-index: 1;
+      }
+
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>My Modal</h1>
+    <button id="open-modal">Clique moi !</button>
+    <div class="modal hidden">
+      <div class="close-btn">x</div>
+      <img
+        src="https://cdn.pixabay.com/photo/2020/07/08/19/13/girl-5384878_1280.jpg"
+        width="350px"
+        alt="femme dans un drap de soie bleu"
+      />
+      <h2>Salut toi !</h2>
+    </div>
+    <div class="overlay hidden"></div>
+    <script>
+      const modal = document.querySelector(".modal");
+      const button = document.querySelector("#open-modal");
+      const overlay = document.querySelector(".overlay");
+      const closeModalBtn = document.querySelector(".close-btn");
+
+      button.addEventListener("click", displayModal);
+
+      function displayModal() {
+        modal.classList.remove("hidden");
+        overlay.classList.remove("hidden");
+      }
+
+      closeModalBtn.addEventListener("click", closeModal);
+
+      function closeModal() {
+        modal.classList.add("hidden");
+        overlay.classList.add("hidden");
+      }
+
+      overlay.addEventListener("click", closeModal);
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && !modal.classList.contains("hidden")) {
+          closeModal(); // on ferme aussi la modale lorsque l'utilisateur appuie sur la touche Echap
+        } 
+      });
+
+    </script>
+  </body>
+</html>
