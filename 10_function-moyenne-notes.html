@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Moyenne des notes</title>
+  </head>
+  <body>
+    <h1>Moyenne des notes</h1>
+<a href="https://grafikart.fr/tutoriels/fonctions-2060" target="_blank">https://grafikart.fr/tutoriels/fonctions-2060 (08:00)</a>
+    <script>
+      const students = [
+        // tableau contenant des objets
+        {
+          name: "Jane",
+          notes: [1, 20, 18, 19, 12],
+        },
+        {
+          name: "Jane",
+          notes: [17, 18, 20, 13, 15],
+        },
+        {
+          name: "Sophie",
+          notes: [17, 12, 14, 15, 13],
+        },
+        {
+          name: "Marc",
+          notes: [2, 3, 5, 8, 9],
+        },
+        {
+          name: "Manon",
+          notes: [18, 17, 18, 19, 12],
+        },
+      ];
+
+      //   const moyenneNotes = sumNotes / students[notes.length];
+      //   const sumNotes = students[i];
+
+      const moyenne = (notes) => {
+        let sum = 0;
+        for (let note of notes) {
+          sum = sum + note;
+        }
+        // console.log(sum)
+        // console.log(sum / notes.length);
+        return sum / notes.length;
+      };
+    //   moyenne([10, 20]); // valeurs ajoutées pour tester les console.log
+    
+    const compareStudent = (a, b) => {
+        return b.moyenne - a.moyenne
+    }
+
+    for (let student of students) {
+        student.moyenne = moyenne(student.notes)
+        student.worst = Math.min(...student.notes)
+        student.best = Math.max(...student.notes)
+    }
+    // console.log(students)
+
+    students.sort(compareStudent)
+
+    // console.log(`Top 3 étudiants
+    // 1: ${students[0].name} avec une moyenne de ${students[0].moyenne}
+    // 2: ${students[1].name} avec une moyenne de ${students[1].moyenne}
+    // 3: ${students[2].name} avec une moyenne de ${students[2].moyenne}
+    // `)
+
+    // On voit ici qu'on se répète, on peut donc créer une fonction :
+
+    const formatStudent = (student) => {
+        return `${student.name} avec une moyenne de ${student.moyenne}, meilleure note (${student.best}), pire note (${student.worst})` // on ne travaille plus avec students[0] etc. mais student, passé en paramètre
+    }
+
+    console.log(`Top 3 étudiants
+    1: ${formatStudent(students[0])} 
+    2: ${formatStudent(students[1])} 
+    3: ${formatStudent(students[2])} 
+    `)
+
+    </script>
+  </body>
+</html>
