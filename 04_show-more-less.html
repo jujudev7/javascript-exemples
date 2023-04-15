@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Show more/less addEventListener</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: #f1f1f1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+
+      article {
+        width: 400px;
+        background: #fff;
+        padding: 20px 20px 0;
+        font-size: 18px;
+        max-height: 270px;
+        overflow: hidden;
+        transition: max-height 1s;
+        text-align: justify;
+        margin-top: 20px;
+      }
+
+      p {
+        margin-bottom: 16px;
+      }
+
+      article.open {
+        max-height: 1000px;
+      }
+
+      button {
+        background: #0e0b22;
+        color: #fff;
+        padding: 0.6rem;
+        margin-top: 20px;
+        border: none;
+        border-radius: 4px;
+        margin-bottom: 30px;
+      }
+
+      button:hover {
+        cursor: pointer;
+        background: #5e5b6d;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Show more/less addEventListener</h1>
+
+    freeCodeCamp link :
+    <a
+      href="https://www.freecodecamp.org/news/html-button-onclick-javascript-click-event-tutorial/"
+      target="_blank"
+      >https://www.freecodecamp.org/news/html-button-onclick-javascript-click-event-tutorial/</a
+    >
+    <h3>Basic eventListener syntax :</h3>
+    element.addEventListener("type-of-event", functionToExecute)
+    <div>
+      <article id="content">
+        <p>
+          freeCodeCamp is one of the best platforms to learn how to code.
+          freeCodeCamp has a detailed curriculum that will take you from zero to
+          hero in web development, software engineering, machine learning, and
+          more.
+        </p>
+
+        <p>
+          freeCodeCamp also has a YouTube channel containing over 1000 videos on
+          web development, software engineering, machine learning, data science,
+          freelance web development, database administration, and pretty much
+          anything related to tech. To get updates when videos are uploaded, you
+          need to subscribe to the channel and turn on notifications. You can
+          also follow freeCodeCamp on Twitter, where links to well written
+          articles and videos are tweeted daily.
+        </p>
+
+        <p>
+          Since no one has to pay to learn how to code on freeCodeCamp,
+          freeCodeCamp runs on voluntary donations from donors all around the
+          world in order to pay employees and maintain servers. If you are
+          generous enough consider joining the donors.
+        </p>
+      </article>
+
+      <button onclick="showMore()">Show more</button>
+    </div>
+
+    <script>
+      const article = document.querySelector("#content");
+      const button = document.querySelector("button");
+
+      function showMore() {
+        if (article.className == "") {
+          article.className = "open";
+          button.innerHTML = "Show less";
+          button.style.backgroundColor = "blue";
+        } else {
+          article.className = "";
+          button.innerHTML = "Show more";
+          button.style.backgroundColor = "#0e0b22";
+        }
+      }
+
+    // OR 
+
+    //   button.onclick = function () {
+    //     if (article.className == "") {
+    //       article.className = "open";
+    //       button.innerHTML = "Show less";
+    //       button.style.backgroundColor = "blue";
+    //     } else {
+    //       article.className = "";
+    //       button.innerHTML = "Show more";
+    //       button.style.backgroundColor = "#0e0b22";
+    //     }
+    //   };
+
+
+      //   btn.addEventListener("click", showMore() {
+      //     content.style.color = "blue";
+      //   });
+
+      //   OR;
+
+      //   btn.addEventListener("click", changeColor);
+      //   function changeColor() {
+      //     name.style.color = "blue";
+      //   }
+    </script>
+  </body>
+</html>
+
+
+1. Create a button <br> 2. Add onclick attribute to the button. Here we want to
+execute the function showMore() <br> 3. Write the Javascript script <br> 4. Declare our
+variables with let, var, or const, things are safer <br> 5. Select the element we
+want to manipulate (getElementById(), getElementsByClassName(), or
+querySelector() ) <br> 6. Write the function
