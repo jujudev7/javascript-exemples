@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Géométrie - Rectangle / Square</title>
+  </head>
+  <body>
+    <h1>Géométrie - Rectangle / Square</h1>
+    <a href="https://grafikart.fr/tutoriels/class-tp-2062" target="_blank">https://grafikart.fr/tutoriels/class-tp-2062</a>
+    <script>
+      class Rectangle {
+        constructor(width, height) {
+          this.width = width;
+          this.height = height;
+        }
+
+        get perimeter() {
+          // return this.width * 2 + this.height * 2
+          return (this.width + this.height) * 2;
+        }
+
+        get isValid() {
+          return this.width > 0 && this.height > 0;
+        }
+
+        isBiggerThan(shape) {
+          return this.perimeter > shape.perimeter;
+        }
+      }
+
+      class Square extends Rectangle {
+        constructor(width) {
+          super(width, width);
+        }
+      }
+
+      /*
+      créer class Rectangle (L H)
+      getter Perimeter (2xL + 2xH)
+      méthode isValid : forme valide ? ex: une dimension ne peut pas être négative
+      class Square, via héritage : extends
+      square = rectangle (L = H)
+      méthode isBiggerThan pour savoir si une forme est + grande que l'autre en utilisant les périmètres
+      */
+      const r = new Rectangle(10, 20);
+      console.log(r.perimeter); // 60
+      console.log(r.isValid); // true
+      const r2 = new Rectangle(-10, 20);
+      console.log(r2.isValid); // false
+      const c = new Square(10);
+      console.log(c.perimeter); // 40
+      console.log(c.isBiggerThan(r)); // false
+      console.log(r.isBiggerThan(c)); // true
+    </script>
+  </body>
+</html>
