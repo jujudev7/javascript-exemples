@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Les classes</title>
+  </head>
+  <body>
+    <h1>Les classes</h1>
+    <a href="https://grafikart.fr/tutoriels/class-2061" target="_blank"
+      >https://grafikart.fr/tutoriels/class-2061</a
+    >
+    <script>
+      const moyenne = (notes) => {
+        let sum = 0;
+        for (let note of notes) {
+          sum = sum + note;
+        }
+        return sum / notes.length;
+      };
+
+      class Student {
+        ecole = "Jules Ferry";
+        _notes = []; // afin d'éviter les erreurs, on définit les notes comme un tableau vide
+        #secret = 'Hello'  // le dièse # crée une variable privée, accessible seulement depuis la class
+
+        constructor(firstname, lastname) {
+          this.firstname = firstname;
+          this.lastname = lastname;
+          // console.log(this)
+        }
+
+        // setNotes(notes) {
+        //   // on crée une méthode pour récupérer les notes
+        //   this.notes = notes;
+        // }
+
+        set notes(v) {  // on crée un setter, v = valeur
+          if (Array.isArray(v)) {   // s'il s'agit bien d'un tableau, on exécute, sinon on ne fait rien, car erreur
+            // this.notes = v  // cela crée une boucle infini, il faut modifier .notes
+            this._notes = v; // il faut maintenant également faire la modif dans canPass
+          }
+        }
+
+        get name () {
+            return `${this.firstname} ${this.lastname}`
+        }
+
+        canPass() {
+          //   return moyenne(this.notes) >= 10;
+        //   return moyenne(this._notes) >= 10;
+          return moyenne(this._notes) >= Student.moyenne; // grâce à la static on peut faire correspondre la moyenne souhaitée
+        }
+
+        static moyenne = 10  // sorte de constante qui va s'ajouter directement à l'objet (Student.moyenne)
+        // équivalent de Student.moyenne = 10
+      }
+
+      class SuperStudent extends Student {
+
+        constructor(firstname, lastname, notes) {
+            super(firstname, lastname)
+            this._notes = notes
+        }
+
+        canPass() {      // cette méthode canPass() va être priorisée par rapport à celle de Student
+            return true  // John sera donc à true, malgré ses mauvaises notes
+        }
+
+        // on peut appeler les méthodes situées dans les prototypes supérieurs grâce au mot clé super
+        get name() {
+            return 'Super ' + super.name // super permet d'appeler une méthode du prototype parent
+        }
+    }
+
+    //   const john = new Student("John", "Doe");
+      const john = new SuperStudent("John", "Doe", [10, 7, 9]); // on définit les notes en 3e paramètres grâce au constructor SuperStudent 
+      //   john.setNotes([10, 10, 9]);
+    //   john.notes = [10, 7, 9]; // grâce au setter
+      console.log(john);
+
+      const jane = new Student("Jane", "Doe");
+      //   jane.setNotes([15, 18, 19]);
+      jane.notes = [15, 18, 19];
+      console.log(jane);
+
+      console.log(john.canPass(), jane.canPass());
+      console.log(john.name);
+      console.log(jane.name);
+    </script>
+  </body>
+</html>
