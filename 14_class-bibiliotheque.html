@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bibliothèque</title>
+  </head>
+  <body>
+    <h1>Géométrie - Rectangle / Square</h1>
+    <a href="https://grafikart.fr/tutoriels/class-tp-2062" target="_blank"
+      >https://grafikart.fr/tutoriels/class-tp-2062 07:11</a
+    >
+    <script>
+      class Book {
+
+        #page = 1
+
+        constructor(title, nbPages) {
+          this.title = title
+          this.nbPages = nbPages
+          // this.#page = 1 on peut déclarer la page ici ou en dehors (ici + haut)
+        }
+
+        get page() {
+          return this.#page
+          }
+
+        nextPage() {
+          if (this.#page < this.nbPages) {
+            this.#page++
+          }
+        }
+
+          close() {
+          this.#page = 1
+        }
+      }
+
+      class Library {
+
+        #books = []
+
+        addBook(book) {
+          this.#books.push(book)
+        }
+
+        addBooks(books) {
+          for (let book of books) {
+            this.addBook(book)
+          }
+          // Possibilité d'utiliser la méthode forEach
+          // books.forEach(this.addBook) //  /!\ ce code ne va pas fonctionner car this est undefined
+          // books.forEach(this.addBook, this) //  pour que ça fonctionne, il faut utiliser this en 2e argument
+          // books.forEach((book) => this.addBook(book)) // ou utiliser une fonction fléchée
+        } 
+
+        findBooksByLetter(letter) {
+          // const found = []
+          // for(let book of this.#books) {
+          //   if (book.title[0].toLowerCase() === letter.toLowerCase()) {
+          //     found.push(book)
+          //   }
+          // }
+          // return found
+
+          // Autre façon d'écrire + rapidement avec méthode filter():
+          return this.#books.filter((book) => book.title[0].toLowerCase() === letter.toLowerCase())
+        }
+      }
+
+      const b = new Book("Seigneur des anneaux", 200);
+      console.log(b.page);
+      b.nextPage();
+      console.log(b.page);
+      b.close();
+      console.log(b.page);
+
+      const l = new Library();
+      l.addBook(b);
+      l.addBooks([
+        new Book("Ready player one", 100),
+        new Book("Oui-oui", 10),
+        new Book("Sillage", 50),
+      ]);
+      console.log(l.findBooksByLetter("S"));
+      /*
+      class Book(title, nbPages)
+      b.page
+      méthode nextPage() pour tourner la page 
+      méthode close() pour fermer le livre
+
+      class Library pour ranger les livres
+      méthode addBook pour ajouter 1 livre
+      méthode addBooks (tableau d'objets) pour ajouter plusieurs livre
+      méthode findBooksByLetter('l') prend en paramètre une lettre et trouvera tous les livres commençant par celle-ci
+      -> la méthode filter() peut être utile
+      */
+    </script>
+  </body>
+</html>
