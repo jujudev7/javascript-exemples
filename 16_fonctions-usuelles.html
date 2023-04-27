@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les fonctions usuelles</title>
+</head>
+<body>
+    <h1>Les fonctions usuelles</h1>
+    <a href="https://grafikart.fr/tutoriels/functions-utiles-2064">https://grafikart.fr/tutoriels/functions-utiles-2064</a>
+    Les fonctions sur les nombres
+    Les fonctions sur les chaînes de caractères
+    Les fonctions sur les tableaux
+    Les fonctions sur les objets
+    Les fonctions sur les fonctions
+<script>
+// Array.prototype.at()
+// The at() method takes an integer value and returns the item at that index, allowing for positive and negative integers. Negative integers count back from the last item in the array. -1 correspond au dernier élément du tableau
+    const notes = [7, 9, 12, 17, 18]
+    console.log(notes.at(-1)) // va renvoyer 18. Équivaut à console.log(notes[notes.length - 1])
+
+    const goodNotes = notes.filter((note) => note >= 10)
+    console.log(goodNotes)
+
+    notes.forEach((note, index) => {
+        console.log(note, index)
+    })
+
+    // console.log(
+    //     notes.reduce((acc, note) => {
+    //         return acc + note
+    //     }, 0)
+    // )
+    console.log(
+        notes.reduce((acc, note) => acc + note, 0) // accumulator, valeur courante
+    )
+
+    const persons = [
+        {firstname: 'John', lastname: 'Doe'},
+        {firstname: 'Jane', lastname: 'Doe'},
+        {firstname: 'Marc', lastname: 'Doe'},
+        {firstname: 'Manon', lastname: 'Doe'},
+    ]
+    console.log(persons)
+
+    persons
+        .map((p) => p.firstname + ' ' + p.lastname)
+        .join('\n') // retour à la ligne
+    
+    console.log(persons
+        .map((p) => p.firstname + ' ' + p.lastname)
+        .join('\n'))
+    
+    function hello() {
+        console.log(this)
+    }
+
+    const hello2 = hello.bind(3)
+    console.log(hello2()) // Number { 3 }, undefined
+
+</script>
+
+</body>
+</html>
